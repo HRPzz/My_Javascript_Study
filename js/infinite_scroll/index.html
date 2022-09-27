@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무한스크롤 예제</title>
+
+    <!-- CSS -->
+    <style>
+        html, body { margin: 0; } /* 마진 제거 */
+
+        /* 패딩 추가되어도 높이 500px 넘지 않게 border-box 설정 */
+        section .box {
+            height: 500px; background: tomato; color: white;
+            box-sizing: border-box; padding: 30px 10px;
+        }
+
+        /* 의사클래스 nth-child 사용해서 짝수번째 child 의 배경색 설정  */
+        section .box:nth-child(2n) { background: teal; }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="box">1번째 블록</div>
+        <div class="box">2번째 블록</div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // 무한스크롤 구현 예제 - 스크롤을 더 이상 내릴 수 없는 순간마다 div 추가됨 (이외에도 다른 구현 방식 존재, 실제 웹에서 쓰려면 많은 가공 필요)
+
+        var count = 2; // 현재 html 에 렌더링된 div 개수
+        window.onscroll = function() { // 윈도우 스크롤 이벤트
+            // (실제 표시되는 영역 크기 + 스크롤이 얼만큼 내려갔는가 >= 실제 요소의 높이)이면 div 추가
+            if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                var toAdd = document.createElement("div"); // div 태그 생성
+                toAdd.classList.add("box"); // 생성한 div 에 class 속성 추가
+                toAdd.textContent = `${++count}번째 블록`; // div 에 템플릿 리터럴로 텍스트 설정
+                document.querySelector('section').appendChild(toAdd); // section 태그에 div 태그 추가
+            }
+        }
+    </script>
+</body>
+</html>

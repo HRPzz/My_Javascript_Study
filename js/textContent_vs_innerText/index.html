@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 문서</title>
+</head>
+<body>
+    <div>요소의
+        
+        
+        
+        <span style="display: none;">콘텐츠</span></div>
+
+    <!-- JavaScript -->
+    <script>
+        // createTextNode: 태그로 감싸지지 않은 단순 텍스트
+        textNode = document.createTextNode("안녕하세요")
+
+        // textContent
+        // 엔터, 스페이스 공백 포함해서 가져옴
+        // 옵션 상관없이 텍스트기만 하면 모두 가져옴
+        console.log(document.querySelector('div').textContent)
+        console.log(textNode.textContent)
+
+        // innerText
+        // display: none;, 엔터, 스페이스 공백 가져오지 못함
+        // 태그로 감싸지지 않은 텍스트는 가져오지 못함
+        console.log(document.querySelector('div').innerText)
+        console.log(textNode.innerText)
+    </script>
+</body>
+</html>

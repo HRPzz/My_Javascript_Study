@@ -1,0 +1,11 @@
+html, body {
+    margin: 0; /* 마진 제거 */
+}
+.container {
+    text-align: center; /* 가운데 정렬 */
+}
+.clock {
+    width: 200px; margin: 5px auto;
+    border: 2px solid black; /* 테두리 */
+    border-radius: 10px; /* 테두리 둥글게 */
+}

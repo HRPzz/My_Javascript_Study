@@ -1,0 +1,31 @@
+* { box-sizing: border-box; } /* 패딩 추가해도 영역 확장 안 됨 */
+body { margin: 0; } /* 마진 제거 */
+.menu {
+    width: 200px; height: 50px;
+    position: fixed; left: 50px; /* 화면 이동해도 절대 움직이지 않고 고정되어 있음 */
+    border-radius: 0 0 30px 30px; /* 좌하단 우하단 모서리 둥글게 */
+    background-color: rgba(0,0,0,0.6); /* 검정 60% 투명하게 */
+
+    /* flex layout */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    color: white; /* 글자색 */
+}
+.menu > span:hover { /* 마우스를 갖다댔을 때 하얀 밑줄 나타남 */
+    border-bottom: 3px solid white;
+    cursor: pointer;
+}
+.content {
+    height: 500px;
+
+    /* flex layout - 가운데 배치 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* div 1번은 메뉴라서 2번부터 배경색 적용 */
+div:nth-child(2) { background-color: coral;}
+div:nth-child(3) { background-color: violet;}
+div:nth-child(4) { background-color: teal;}

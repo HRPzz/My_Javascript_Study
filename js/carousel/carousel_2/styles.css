@@ -1,0 +1,48 @@
+.container {
+    width: 640px;
+    margin: 0 auto; /* 가운데 배치 */
+}
+
+h1 {
+    text-align: center;
+}
+
+.album {
+    width: 640px;
+    height: 400px;
+    overflow: hidden; /* 넘치면 안 보이게 */
+}
+
+.images {
+    position: relative; /* 위치값을 이동시키기 위함 */
+    display: flex; /* 이미지를 세로가 아니라 가로로 배치 */
+
+    /* 애니메이션 효과 - transform 속성에 대해 0.5s 만큼 duration 설정 */
+    transition: transform 0.5s;
+}
+
+img {
+    width: 640px;
+}
+
+/* c.f. border 는 레이아웃(요소 크기)에 영향을 끼침, outline 은 레이아웃에 영향을 주지 않고 비주얼적 효과만 발생하므로 공간을 차지하지 않음 */
+button, button:active, button:focus {
+    width: 100px; height: 30px; border: none;
+    color: white; background-color: teal; outline: none;
+}
+
+button:hover {
+    background-color: turquoise;
+}
+
+button:disabled {
+    background-color: gray;
+}
+
+.prev {
+    float: left;
+}
+
+.next {
+    float: right;
+}

@@ -1,0 +1,13 @@
+.container {
+    width: 300vw;
+
+    /* 0.5초마다 transform 변경, 제이쿼리보다 성능 좋은 애니메이션 처리 */
+    transition: transform 0.5s;
+}
+.inner {
+    width: 100vw;
+    float: left;
+}
+.inner img {
+    width: 100%;
+}

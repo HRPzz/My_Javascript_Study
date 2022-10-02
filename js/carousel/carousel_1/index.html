@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="xMove=device-xMove, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body style="margin: 0;">
+    
+    <!-- overflow: hidden; 가로 스크롤 바 생기지 않음 -->
+    <div style="overflow: hidden">
+        <div class="container">
+            <!-- div.inner 요소가 3개를 초과하면 flex layout 깨지는 문제 발생 -->
+            <div class="inner">
+                <img src="blossoms.jpg">
+            </div>
+            <div class="inner">
+                <img src="fir.jpg">
+            </div>
+            <div class="inner">
+                <img src="pendulum.jpg">
+            </div>
+        </div>
+    </div>
+    
+    <button class="prev">Prev</button>
+    <button class="next">Next</button>
+
+    <!-- JavaScript -->
+    <script>
+        var xMove = 0;
+        var imgCount = document.querySelectorAll('img').length; // tag 이미지 개수
+
+        // 버튼 클릭 이벤트
+        document.querySelector('.prev').addEventListener('click', function() {
+            console.log(xMove)
+            if (xMove === 0) {
+                xMove = -100*(imgCount-1); // 마지막 이미지로 이동
+            } else {
+                xMove += 100; // 왼쪽으로 이동
+            }
+            // 버튼 누르면 이동, 애니메이션 줄 땐 마진보다 더 빠르게 동작함
+            document.querySelector('.container').style.transform = `translate(${xMove}vw)`;
+        });
+
+        // 버튼 클릭 이벤트
+        document.querySelector('.next').addEventListener('click', function() {
+            console.log(xMove)
+            if (xMove <= -100*(imgCount-1)) {
+                xMove = 0; // 처음 이미지로 이동
+            } else {
+                xMove -= 100; // 오른쪽으로 이동
+            }
+            document.querySelector('.container').style.transform = `translate(${xMove}vw)`;
+        });
+    </script>
+</body>
+</html>

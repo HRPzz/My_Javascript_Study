@@ -1,0 +1,48 @@
+/* Web Font 인 디지털LAB 설정 */
+@font-face {
+    font-family: 'LABDigital';
+    font-weight: normal;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/fontlab/LABDigital.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/fontlab/LABDigital.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/fontlab/LABDigital.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/fontlab/LABDigital.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/fontlab/LABDigital.ttf') format("truetype");
+    font-display: swap;
+}
+
+/* 패딩을 추가했을 때 패딩에 의해 박스가 커지는 것 방지 */
+* { font-family: 'LABDigital'; box-sizing: border-box; }
+
+html, body { margin: 0; background-color: black; } /* 마진 제거 */
+
+.container {
+    /* width 값이 마냥 작아지거나 마냥 커지는 것 방지하기 위해 min, max 설정 */
+    width: 80%; min-width: 320px; max-width: 640px;
+
+    /* 가운데 배치하기 위한 마진 설정 */
+    margin: 10px auto; padding: 5px 0 15px;
+
+    text-align: center; border: 1px solid white;
+    border-radius: 16px;
+}
+
+h2 { color: white; }
+h1 { color: red; }
+
+h1 > span {
+    display: inline-block; /* 인라인 요소는 width, height 설정 불가 */
+    width: 40px;
+}
+
+button {
+    color: darkslategray; background-color: lightgray;
+    font-size: 16px; padding: 6px;
+    width: 100px; border: none; border-radius: 3px;
+}
+
+/* 의사클래스 사용 - 마우스로 버튼을 눌렀을 때 효과 설정 */
+button:active {
+    color: lightgray;
+    background-color: darkslategray;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * { box-sizing: border-box; margin: 0 auto; }
+        ul {
+            display: flex; justify-content: center; align-items: center;
+        }
+        li {
+            list-style: none;
+            width: 50px; height: 50px;
+            color: white; background-color: orange;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer;
+        }
+        li:active {
+            color: orange; background-color: black;
+        }
+    </style>
+</head>
+<body>
+    
+    <ul class="list">
+        <!-- 드래그를 하겠다는 속성(draggable)을 지정 => drag event 발생 원활 -->
+        <li class="item" draggable="true">P</li>
+        <li class="item" draggable="true">P</li>
+        <li class="item" draggable="true">A</li>
+        <li class="item" draggable="true">E</li>
+        <li class="item" draggable="true">L</li>
+    </ul>
+
+    <script>
+        const list = document.querySelector(".list");
+
+        // dragstart, dragover, drop
+        let picked = null;
+        let pickedInex = null;
+        list.addEventListener("dragstart", (e)=>{
+            const obj = e.target; // target: 드래그 당한 요소
+            picked = obj;
+
+            // e.target.parentNode.children 은 html collection 이므로 indexOf 함수를 사용해서 인덱스를 알아내려면 배열로 변환해야 함
+            // => spread operator 로 html collection 의 요소만 가져와서 array 로 만들면 됨
+            pickedIndex = [...obj.parentNode.children].indexOf(obj); // 타겟 인덱스
+        });
+        list.addEventListener("dragover", (e)=>{
+            e.preventDefault(); // drop 전 dragover 기능 작동 방지
+        });
+        list.addEventListener("drop", (e)=>{
+            const obj = e.target; // target: 놓임 당한 요소
+            const dropedIndex = [...obj.parentNode.children].indexOf(obj); // 타겟 인덱스
+            
+            // 단순히 밀리기만 할 뿐 해당 요소끼리의 위치 교환이 되는 것은 아님
+            dropedIndex > pickedIndex ? obj.after(picked) : obj.before(picked);
+        });
+    </script>
+
+</body>
+</html>

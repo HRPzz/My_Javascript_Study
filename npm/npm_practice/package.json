@@ -1,0 +1,22 @@
+{
+    "name": "npm_practice",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "live-server",
+        "go": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "HRPzz",
+    "license": "ISC",
+    "dependencies": {
+        "bootstrap": "^4.4.1",
+        "moment": "^2.29.4"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "gulp-sass": "^5.1.0"
+    }
+}

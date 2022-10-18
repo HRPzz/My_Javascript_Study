@@ -1,0 +1,157 @@
+/* FontAwesome CDN */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css);
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* c.f. 레이아웃 잡으려면 무조건 임시 border 그려보길 권장 */
+.container {
+    height: 100vh;
+
+    /*
+        배경 이미지
+        - background-image: url(images/sunrise.jpg);
+        - background-repeat: no-repeat;
+        - background-size: cover;
+        - background-position: center center;
+    */
+    background: url(images/sunrise.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+/* 가상클래스 - 무조건 content 있어야 함 */
+.container:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+form.box {
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
+
+form.box h1 {
+    font-weight: normal;
+}
+
+/* c.f. 공통으로 들어가는 속성 설정(코드 중복 최소화) */
+form.box input {
+    border: none;
+}
+
+/* input 속성 선택자 사용 */
+form.box input[type="text"] {
+    background-color: #fff;
+    width: 340px;
+    padding: 10px;
+
+    /*
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+    */
+    border-radius: 25px 0 0 25px;
+}
+
+form.box input[type="submit"] {
+    width: 130px;
+    background-color: orange;
+    padding: 10px;
+    border-radius: 0 25px 25px 0;
+    color: #fff;
+    margin-left: -6px;
+}
+
+/*
+    콜론(:)
+    - 1개 => CSS 2부터 있던 가상 클래스 문법
+    - 2개 => CSS 3부터 생긴 가상 클래스에서 사용해야 함
+*/
+form.box input[type="text"]::placehlder {
+    color: red;
+}
+
+.search {
+    width: 30px;
+    height: 30px;
+    background-color: #222;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: 0.5s;
+}
+.search.active {
+    width: 100%;
+    height: 100vh;
+}
+
+.search form {
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: none; /* 최초에는 search 밑의 form 이 보이지 않게 설정 */
+}
+.search.active form {
+    display: block;
+}
+
+/* 
+    배경색 없애기
+    - background-color: none 은 브라우저가 이해하지 못함
+    - background-color: transparent 사용해야 투명해짐
+*/
+.search form input[type="text"] {
+    color: red;
+    background-color: transparent;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+}
+
+.search form input[type="text"]::placeholder {
+    color: #fff;
+    font-size: 26px;
+    text-align: center;
+}
+
+.search .icon {
+    border: 1px solid #fff;
+    width: 30px;
+    height: 30px;
+    background-color: #222;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+/* 
+    클릭했을 때 fontawesome 아이콘이 변경되게 하려면
+    태그(html)로 직접 입력하지 말고 가상 클래스를 사용해야 함
+*/
+.search .icon:before {
+    content: "\f002"; /* fontawesome 아이콘 search 의 유니코드 입력 */
+    font-family: fontawesome;
+}
+
+/* 제이쿼리로 추가된 active 클래스로 인해 작동 */
+.search.active .icon:before {
+    content: "\f00d"; /* fontawesome 아이콘 times 의 유니코드 입력 */
+    font-family: fontawesome;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rellax</title>
+
+        <!-- Rellax CDN -->
+        <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- data-rellax-speed 속성 추가 -->
+        <article class="content">
+            <div class="one rellax" data-rellax-speed="4">Faster</div>
+            <div class="two">No parallax</div>
+            <div class="three rellax" data-rellax-speed="-8">Slower</div>
+            <img
+                class="image rellax"
+                data-rellax-speed="10"
+                src="./imgs/gallaxy.png"
+                alt=""
+            />
+        </article>
+
+        <!-- JavaScript -->
+        <script>
+            new Rellax(".rellax");
+        </script>
+    </body>
+</html>
